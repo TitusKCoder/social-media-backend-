@@ -12,9 +12,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            validate: (input) => {
-                return validators.isEmail(input)
-            },
+            match: [/^(.+)@(.+)$/],
         },
         thoughts: [
             {

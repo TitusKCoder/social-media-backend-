@@ -8,12 +8,12 @@ const reactionSchema = new Schema(
             type: Schema.Types.ObjectId,
             default: new Types.ObjectId
         },
-        reactionBody: {
+        reactionText: {
             type: String,
             required: true,
             maxlength: 280,
         },
-        username: {
+        userName: {
             type: String,
             required: true,
         },

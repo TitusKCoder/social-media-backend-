@@ -1,6 +1,9 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
 const { connect, connection } = require('mongoose');
+const URI = process.env.MONGODB_URI;
 
-connect('mongodb://localhost/social-media-backend', {
+mongoose.connect(URI,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
