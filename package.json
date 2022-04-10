@@ -1,17 +1,20 @@
 {
   "name": "social-media-backend-",
   "version": "1.0.1",
-  "description": "social media backend homework",
+  "description": "social media backend",
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index",
+    "start": "node server",
+    "dev": "nodemon server",
     "seed": "node utils/seed"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^6.0.13"
+    "moment": "^2.29.2",
+    "monent": "^0.0.2-security",
+    "mongoose": "^6.0.13",
+    "mongoose-validators": "^0.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.9"

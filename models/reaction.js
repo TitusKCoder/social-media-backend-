@@ -1,19 +1,17 @@
-const Schema = require('mongoose');
+const {Schema, Types} = require('mongoose');
+const moment = require('moment');
+
 
 const reactionSchema = new Schema(
     {
         reactionId:{ 
             type: Schema.Types.ObjectId,
-            default: new Schema.Types.ObjectId,
+            default: new Types.ObjectId
         },
         reactionBody: {
             type: String,
             required: true,
-            validate: {
-                validator: 'isLength',
-                arguements: [1,280],
-                message: 'The text must be between 1 ans 280 characters.'
-            }
+            maxlength: 280,
         },
         username: {
             type: String,
@@ -22,15 +20,15 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now(),
-            //Use a getter method to format the timestamp on query
+            get: (timestamp) => moment(timestamp).format('MMMM Do YYYY, h:mm:ss a'),
         }
     },
     {
         toJSON: {
             getters: true
         },
-        _id: false
+        id: false
     }
 ); 
 
-module.exports = Reaction;
+module.exports = reactionSchema;

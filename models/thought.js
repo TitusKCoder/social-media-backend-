@@ -1,23 +1,21 @@
 const {Schema , model } = require('mongoose');
 const reactionSchema = require('./reaction');
+const moment = require('moment');
 
 const thoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
             required: true,
-            validate: {
-                validator: 'isLength',
-                arguements: [1,280],
-                message: 'The text must be between 1 ans 280 characters.'
-            }
+            maxlength: 280,
+            minlength: 1,
         },
-        createdAT: {
+        createdAt: {
             type: Date,
             default: Date.now(),
-            // use a getter methond to format the timestamp on query. What does this mean
+            get: (timestamp) => moment(timestamp).format('MMMM Do YYYY, h:mm:ss a'),
         },
-        username: {
+        userName: {
             type: String,
             required: true,
         },
@@ -27,7 +25,8 @@ const thoughtSchema = new Schema(
         toJSON: {
             virtuals: true,
             getters: true,
-        }
+        },
+        _id: false,
     }
 );
 

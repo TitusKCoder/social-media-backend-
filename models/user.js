@@ -13,7 +13,7 @@ const userSchema = new Schema(
             required: true,
             unique: true,
             validate: (input) => {
-                return validator.isEmail(input)
+                return validators.isEmail(input)
             },
         },
         thoughts: [
@@ -32,7 +32,8 @@ const userSchema = new Schema(
     {
         toJSON: {
             virtuals: true,
-        }
+        },
+        id: false,
     }
 );
 
